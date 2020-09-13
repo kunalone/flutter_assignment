@@ -1,5 +1,9 @@
+import 'package:assignment/Screens/VedioScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:assignment/Screens/CustomWidgets/ProgressStages.dart';
+import 'package:assignment/Screens/EmailScreen.dart';
+import 'package:assignment/Screens/PasswordScreen.dart';
+import 'package:assignment/Screens/PersonalScreen.dart';
 import 'package:assignment/Screens/EmailScreen.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -25,45 +29,53 @@ class _LandingScreenState extends State<LandingScreen>
     super.dispose();
   }
 
-  void changeTheSelectedIndex(index){
+  void changeTheSelectedIndex(index) {
     this.setState(() {
       _selectedIndex = index;
     });
   }
 
-
-
-  var nextButtonClickedFrom = (value, context) =>
-  {
-    context.changeTheSelectedIndex(value)
-  };
+  var nextButtonClickedFrom =
+      (value, context) => {context.changeTheSelectedIndex(value)};
 
   Widget getTheCorrectView() {
     switch (_selectedIndex) {
       case 0:
-        return EmailScreen(nextButtonEvent: this.nextButtonClickedFrom, instanceOfThat: this,);
+        return EmailScreen(
+          nextButtonEvent: this.nextButtonClickedFrom,
+          instanceOfThat: this,
+        );
         break;
       case 1:
-        return EmailScreen(nextButtonEvent: this.nextButtonClickedFrom);
+        return PasswordScreen(
+          nextButtonEvent: this.nextButtonClickedFrom,
+          instanceOfThat: this,
+        );
         break;
       case 2:
-        return EmailScreen(nextButtonEvent: this.nextButtonClickedFrom);
+        return PersonalScreen(
+          nextButtonEvent: this.nextButtonClickedFrom,
+          instanceOfThat: this,
+        );
         break;
       case 3:
-        return EmailScreen(nextButtonEvent: this.nextButtonClickedFrom);
+        return VedioScreen(
+          nextButtonEvent: this.nextButtonClickedFrom,
+          instanceOfThat: this,
+        );
         break;
+      default:
+        return EmailScreen(
+          nextButtonEvent: this.nextButtonClickedFrom,
+          instanceOfThat: this,
+        );
     }
-
-    return EmailScreen(nextButtonEvent: this.nextButtonClickedFrom);
   }
 
   @override
   Widget build(BuildContext context) {
     contextToReffer = context;
-    var bottom = MediaQuery
-        .of(context)
-        .viewInsets
-        .bottom;
+    var bottom = MediaQuery.of(context).viewInsets.bottom;
 
     return SafeArea(
       child: Scaffold(
@@ -78,24 +90,24 @@ class _LandingScreenState extends State<LandingScreen>
               child: Row(children: [
                 Expanded(
                     child: ProgressStage(
-                      value: "1",
-                      isCompleted: "0",
-                    )),
+                  value: "1",
+                  isCompleted:_selectedIndex > 0? "1":"0",
+                )),
                 Expanded(
                     child: ProgressStage(
-                      value: "2",
-                      isCompleted: "0",
-                    )),
+                  value: "2",
+                  isCompleted: _selectedIndex > 1? "1":"0",
+                )),
                 Expanded(
                     child: ProgressStage(
-                      value: "3",
-                      isCompleted: "0",
-                    )),
+                  value: "3",
+                  isCompleted: _selectedIndex > 2? "1":"0",
+                )),
                 Expanded(
                     child: ProgressStage(
-                      value: "4",
-                      isCompleted: "0",
-                    ))
+                  value: "4",
+                  isCompleted: _selectedIndex > 3? "1":"0",
+                ))
               ]),
             ),
             Expanded(child: this.getTheCorrectView())
