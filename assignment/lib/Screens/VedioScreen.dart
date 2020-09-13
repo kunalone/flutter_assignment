@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+
 class VedioScreen extends StatefulWidget {
   final Function nextButtonEvent;
   final State instanceOfThat;
@@ -30,14 +31,13 @@ class _VedioScreenState extends State<VedioScreen> {
 
   sec5Timer() {
     Timer.periodic(Duration(seconds: 1), (timer) {
-      if(_height == 100){
+      if (_height == 100) {
         this.setState(() {
           _width = 120;
           _height = 120;
           _borderRadius = BorderRadius.circular(60);
         });
-      }
-      else{
+      } else {
         this.setState(() {
           _width = 100;
           _height = 100;
@@ -54,23 +54,26 @@ class _VedioScreenState extends State<VedioScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-           Align(alignment: Alignment.center,child:  AnimatedContainer(width: _width,
-               child: Icon(
-                 Icons.calendar_today,
-                 color: Colors.white,
-                 size: 50.0,
-                 semanticLabel: 'Text to announce in accessibility modes',
-               ),
-               height: _height,
-               decoration: BoxDecoration(
-                 color: Colors.blue,
-                 borderRadius: _borderRadius,
-               ),
-               // Define how long the animation should take.
-               duration: Duration(seconds: 1),
-               // Provide an optional curve to make the animation feel smoother.
-               curve: Curves.easeOut),),
-
+            Align(
+              alignment: Alignment.center,
+              child: AnimatedContainer(
+                  width: _width,
+                  child: Icon(
+                    Icons.calendar_today,
+                    color: Colors.white,
+                    size: 50.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
+                  ),
+                  height: _height,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: _borderRadius,
+                  ),
+                  // Define how long the animation should take.
+                  duration: Duration(seconds: 1),
+                  // Provide an optional curve to make the animation feel smoother.
+                  curve: Curves.easeOut),
+            ),
             Padding(
               child: Align(
                 alignment: Alignment.center,
@@ -127,7 +130,18 @@ class _VedioScreenState extends State<VedioScreen> {
                   ),
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2040))
+                    .then((value) => {
+                  this.setState(() {
+                    _dateString = value.toString();
+                  })
+                });
+              },
             ),
             SizedBox(
               height: 10,
@@ -167,15 +181,25 @@ class _VedioScreenState extends State<VedioScreen> {
                   ),
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                showTimePicker(context: context, initialTime: TimeOfDay.now()).then((value) => {
+                  this.setState(() {
+                    _timeString = value.toString();
+                  })
+                });
+              },
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             FlatButton(
-              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(5.0)),
                 color: Colors.blue,
                 textColor: Colors.white,
                 padding: EdgeInsets.all(8.0),
                 splashColor: Colors.blueAccent,
+
                 onPressed: () {
                   widget.nextButtonEvent(4, widget.instanceOfThat);
                 },
