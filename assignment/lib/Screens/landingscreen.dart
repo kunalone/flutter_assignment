@@ -4,7 +4,7 @@ import 'package:assignment/Screens/CustomWidgets/ProgressStages.dart';
 import 'package:assignment/Screens/EmailScreen.dart';
 import 'package:assignment/Screens/PasswordScreen.dart';
 import 'package:assignment/Screens/PersonalScreen.dart';
-import 'package:assignment/Screens/EmailScreen.dart';
+
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class _LandingScreenState extends State<LandingScreen>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   int _selectedIndex = 0;
-  BuildContext contextToReffer;
+
 
   @override
   void initState() {
@@ -74,9 +74,6 @@ class _LandingScreenState extends State<LandingScreen>
 
   @override
   Widget build(BuildContext context) {
-    contextToReffer = context;
-    var bottom = MediaQuery.of(context).viewInsets.bottom;
-
     return SafeArea(
       child: Scaffold(
         body: Column(
