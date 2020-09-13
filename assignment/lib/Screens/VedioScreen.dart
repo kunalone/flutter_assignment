@@ -55,6 +55,12 @@ class _VedioScreenState extends State<VedioScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
            Align(alignment: Alignment.center,child:  AnimatedContainer(width: _width,
+               child: Icon(
+                 Icons.calendar_today,
+                 color: Colors.white,
+                 size: 50.0,
+                 semanticLabel: 'Text to announce in accessibility modes',
+               ),
                height: _height,
                decoration: BoxDecoration(
                  color: Colors.blue,
