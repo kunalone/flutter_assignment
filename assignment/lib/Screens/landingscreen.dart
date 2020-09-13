@@ -83,7 +83,7 @@ class _LandingScreenState extends State<LandingScreen>
             ),
             Container(
               height: 80,
-              color: Colors.white,
+
               child: Row(children: [
                 Expanded(
                     child: ProgressStage(

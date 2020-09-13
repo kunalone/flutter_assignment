@@ -18,7 +18,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
       children: [
         Text("Create password"),
         Text("password will be used to login to account"),
-        TextField(
+        Padding(padding: EdgeInsets.all(20),child: TextField(
           onChanged: (value) {
             //Do something with the user input.
           },
@@ -29,18 +29,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(32.0)),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-              borderRadius: BorderRadius.all(Radius.circular(32.0)),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-              borderRadius: BorderRadius.all(Radius.circular(32.0)),
-            ),
           ),
-        ),
+        ),),
         Row(
           children: [
             Expanded(

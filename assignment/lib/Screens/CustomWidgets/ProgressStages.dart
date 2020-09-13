@@ -14,7 +14,10 @@ class ProgressStage extends StatelessWidget {
           child: Center(
             child: Text(
               this.value,
-              style: TextStyle(color: Colors.green),
+              style: TextStyle(
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18),
             ),
           ));
     } else {
@@ -22,7 +25,8 @@ class ProgressStage extends StatelessWidget {
           child: Center(
         child: Text(
           this.value,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.normal, fontSize: 16),
         ),
       ));
     }
