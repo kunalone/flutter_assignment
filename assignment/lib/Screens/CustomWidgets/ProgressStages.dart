@@ -8,12 +8,23 @@ class ProgressStage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    if(this.isCompleted == "1"){
-      return Container(child: Text(this.value,style: TextStyle(color: Colors.green),));
-    }
-    else{
-      return Container(child: Text(this.value,style: TextStyle(color: Colors.black),));
+    if (this.isCompleted == "1") {
+      return Container(
+          width: 40,
+          child: Center(
+            child: Text(
+              this.value,
+              style: TextStyle(color: Colors.green),
+            ),
+          ));
+    } else {
+      return Container(
+          child: Center(
+        child: Text(
+          this.value,
+          style: TextStyle(color: Colors.black),
+        ),
+      ));
     }
   }
 }
