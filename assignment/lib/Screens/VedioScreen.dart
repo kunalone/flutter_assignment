@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:date_format/date_format.dart';
+import 'package:assignment/Screens/WelcomScreen.dart';
 
 class VedioScreen extends StatefulWidget {
   final Function nextButtonEvent;
@@ -199,9 +201,10 @@ class _VedioScreenState extends State<VedioScreen> {
                 textColor: Colors.white,
                 padding: EdgeInsets.all(8.0),
                 splashColor: Colors.blueAccent,
-
                 onPressed: () {
-                  widget.nextButtonEvent(4, widget.instanceOfThat);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WelcomeScreen()));
                 },
                 child: Text(
                   "NEXT",
