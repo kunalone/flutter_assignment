@@ -15,7 +15,7 @@ class ProgressStage extends StatelessWidget {
             child: Text(
               this.value,
               style: TextStyle(
-                  color: Colors.green,
+                  color: Colors.blue,
                   fontWeight: FontWeight.bold,
                   fontSize: 18),
             ),
